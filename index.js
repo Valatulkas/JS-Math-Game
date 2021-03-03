@@ -3,6 +3,8 @@ $(document).ready(function(){
   var interval;
   var timeLeft = 10;
   var score = 0;
+  var highScore = 0;
+  var countDown = document.querySelector('.count-down');
 
   var updateTimeLeft = function (amount) {
     timeLeft += amount;
@@ -18,13 +20,20 @@ $(document).ready(function(){
     if (!interval) {
       if (timeLeft === 0) {
         updateTimeLeft(10);
-        updateScore(-score);
       }
       interval = setInterval(function () {
         updateTimeLeft(-1);
         if (timeLeft === 0) {
+          countDown.style.backgroundColor = 'red';
+          if (score > highScore) {
+            highScore = score;
+            $('#high-score').text(score);
+          }
+          updateScore(-score);
+          alert('ANSWER CURRENT EQUATION TO START OVER');
           clearInterval(interval);
           interval = undefined;
+
         }
       }, 1000);
     }
@@ -38,7 +47,7 @@ $(document).ready(function(){
     var question = {};
     var num1 = randomNumberGenerator(10);
     var num2 = randomNumberGenerator(10);
-    
+
     question.answer = num1 + num2;
     question.equation = String(num1) + " + " + String(num2);
 
@@ -60,6 +69,7 @@ $(document).ready(function(){
   };
 
   $('#user-input').on('keyup', function () {
+    countDown.style.backgroundColor = 'greenYellow';
     startGame();
     checkAnswer(Number($(this).val()), currentQuestion.answer);
   });

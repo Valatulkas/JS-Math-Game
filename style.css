@@ -1,6 +1,38 @@
-h2 {
-  color: purple;
+.title {
+  font-weight:900;
+  margin-top: 70px;
+  margin-bottom: 70px;
+  font-style: italic;
+
 }
+
 .row {
   text-align: center;
+}
+input {
+  margin-bottom: 12px;
+  margin-top: 12px;
+}
+.count-down {
+  color: black;
+  text-transform: uppercase;
+  border-radius: 50%;
+  width: 160px;
+  height: 160px;
+  margin: auto;
+  padding-top: 6px;
+}
+#remaining, h2 {
+  font-stretch: expanded;
+  color: black;
+  font-weight: bolder;
+}
+
+h4, h3, h5 {
+  margin-bottom: 34px;
+}
+
+hr {
+  border-top: 1px solid grey;
+  width: 400px;
 }
