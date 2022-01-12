@@ -23,6 +23,9 @@ $(document).ready(function(){
       }
       interval = setInterval(function () {
         updateTimeLeft(-1);
+        if (timeLeft === 3) {
+          countDown.style.backgroundColor = 'orange'
+        }
         if (timeLeft === 0) {
           countDown.style.backgroundColor = 'red';
           if (score > highScore) {
